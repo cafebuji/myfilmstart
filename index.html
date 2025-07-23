@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ivy’s digital diary ♡｡⋆</title>
+  <style>
+    body {
+      font-family: 'Georgia', serif;
+      background: #fff;
+      color: #333;
+      margin: 0;
+      padding: 0;
+    }
+
+    header {
+      text-align: center;
+      padding: 20px;
+      border-bottom: 1px solid #f0f0f0;
+      background-color: #fff5fa;
+    }
+
+    header h1 {
+      font-size: 24px;
+      margin: 0;
+      color: #444;
+    }
+
+    .quote {
+      font-size: 13px;
+      color: #888;
+      margin-top: 5px;
+    }
+
+    .container {
+      display: flex;
+      max-width: 1200px;
+      margin: 20px auto;
+      gap: 30px;
+      padding: 0 20px;
+    }
+
+    .left-column,
+    .middle-column,
+    .right-column {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .grid-gallery {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 6px;
+    }
+
+    
+.side-gallery img,
+.page img {
+  width: 100%;
+  border-radius: 4px;
+}
+.grid-gallery img {
+  width: 100%;
+  aspect-ratio: 1 / 1; /* forces square shape */
+  object-fit: cover;   /* zooms in/crops to fit square */
+  border-radius: 4px;
+}
+
+    .section h3,
+    .checklist-section h3,
+    .pages-header h3 
+    .left-column h3{
+      font-size: 16px;
+      color: #d18fa5;
+      margin-bottom: 5px;
+      border-bottom: 1px dashed #e3c9cf;
+      padding-bottom: 3px;
+    }
+
+    .section ul,
+    .checklist-section {
+      font-size: 14px;
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .section ul li {
+      margin-bottom: 6px;
+    }
+
+    .checklist-section label {
+      display: block;
+      margin-bottom: 5px;
+    }
+
+    .pages-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .pages-list .page {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+
+    .add-new {
+      background: #fbe6ee;
+      border: none;
+      padding: 5px 10px;
+      border-radius: 4px;
+      font-size: 14px;
+      cursor: pointer;
+      color: #b17086;
+    }
+
+    .footer-quote {
+      font-size: 13px;
+      color: #999;
+      font-style: italic;
+      margin-top: 20px;
+    }
+
+    .side-gallery {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      margin-top: 10px;
+    }
+    .text-link {
+  display: inline-block;  /* enables better padding control */
+  padding: 2px 12px;       /* more horizontal space */
+  border-radius: 6px;
+  text-decoration: none;
+  color: inherit;
+  font: inherit;
+  transition: background-color 0.2s ease;
+}
+
+.text-link:hover {
+  background-color: rgba(0, 0, 0, 0.07);
+}
+  </style>
+</head>
+<body>
+  <header>
+    <h1>ivy’s digital diary ♡｡⋆</h1>
+    <p class="quote">“my glow-up is not for a comeback — it’s a premiere.” ✧</p>
+  </header>
+
+  <main class="container">
+    <section class="left-column">
+      <h3>current moodboard ·｡.☆</h3>
+      <div class="grid-gallery">
+        <img src="" alt="">
+        <img src="https://i.pinimg.com/1200x/72/d6/3d/72d63d9813a3b3fc9b1b8d26ed20d807.jpg" alt="">
+        <img src="https://i.pinimg.com/736x/d9/f7/9b/d9f79bbe1cd53295226d821de4156c8e.jpg" alt="">
+        <img src="https://i.pinimg.com/736x/47/64/bb/4764bb17972e86b97eb7d39873e9505e.jpg" alt="">
+        <img src="https://i.pinimg.com/736x/55/69/8c/55698c3bccae68b81996299141843c5e.jpg" alt="">
+        <img src="https://i.pinimg.com/736x/24/dd/e0/24dde01c38dd8cb475a8efcc8ceca434.jpg" alt="">
+        <img src="https://i.pinimg.com/736x/0f/14/0e/0f140e98408edc7370eaf4e89f7c0762.jpg" alt="">
+        <img src="https://i.pinimg.com/736x/66/a8/70/66a8700398d8db33229973ffc05702ec.jpg" alt="">
+        <img src="https://i.pinimg.com/736x/0c/d1/8a/0cd18a36a7e1a1dd79d898ab2a0aee80.jpg" alt="">
+      </div>
+
+      <div class="checklist-section">
+        <h3>bucket list ·｡.☆</h3>
+        <label><input type="checkbox"> befriend a stray cat</label>
+        <label><input type="checkbox"> stay on top of work</label>
+        <label><input type="checkbox"> get back into habits</label>
+        <label><input type="checkbox"> write song</label>
+      </div>
+
+      <div class="checklist-section">
+        <h3>daily priorities ·｡.☆</h3>
+        <label><input type="checkbox"> drink water</label>
+        <label><input type="checkbox"> eat healthy</label>
+        <label><input type="checkbox"> get enough sleep</label>
+        <label><input type="checkbox"> stretch</label>
+      </div>
+    </section>
+
+    <section class="middle-column">
+      <div class="section">
+        <h3>projects ·｡.✧</h3>
+        <ul>
+          <li>film log</li>
+          <li>--demo by ivy</li>
+          <li>dance practice</li>
+        </ul>
+      </div>
+      <div class="section">
+        <h3>headspace ·｡.✧</h3>
+        <ul>
+          <li>notebook</li>
+        </ul>
+      </div>
+      <div class="section">
+        <h3>self study ·｡.✧</h3>
+        <ul>
+          <li>skincare routine</li>
+          <li>makeup guide</li>
+          <li>fitness plan</li>
+        </ul>
+      </div>
+      <div class="section">
+        <h3>let's work together ·｡.✧</h3>
+        <ul>
+          <li>press kit  -- click to see pdf</li>
+          <li>contact!!</li>
+        </ul>
+      </div>
+      <div class="section">
+        <h3>socials ·｡.✧</h3>
+        <ul>
+          <li>instagram</li>
+          <li><a href="https://www.youtube.com/@ivy-ly5dj" 
+   class="text-link" 
+   target="_blank" 
+   rel="noopener noreferrer">youtube</a>
+</li>
+          <li>tiktok</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="right-column">
+      <div class="pages-header">
+        <h3>about me ♡.｡</h3>
+        <p>in progress // forever</p>
+      </div>
+      <div class="pages-list">
+        <div class="page">
+          <img src="page1.jpg" alt="" style="width: 60px;">
+          <span>hi<br>my name is ivy.<br> i am a dancer, vlogger, and beauty influencer<br>i made this personal planner inspired portfolio for people to get a feel of whats it like inside my headspace, my pace, my process.<br></span>
+      </div>
+
+      <p class="footer-quote">a girl who is going to do big things cannot let small things get to her ♡</p>
+<div class="checklist-section">
+        <h3>current rotations in sound ·｡.☆</h3>
+        <iframe data-testid="embed-iframe" style="border-radius:12px" src="https://open.spotify.com/embed/playlist/1VyffJHyE6J5pmJ7ivq7VZ?utm_source=generator" width="100%" height="200" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+
+      <div class="side-gallery">
+        <img src="https://i.pinimg.com/736x/3b/3a/bf/3b3abf63672cbf900fb19088ea72734e.jpg" alt="">
+        <img src="https://i.pinimg.com/736x/bf/02/94/bf02941f2532d24126be2ec4d50cd8eb.jpg" alt="">
+        <img src="tiles.jpg" alt="">
+        <img src="mirror.jpg" alt="">
+        <img src="eyes.jpg" alt="">
+      </div>
+    </section>
+  </main>
+</body>
+</html>
