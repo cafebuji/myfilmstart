@@ -1,6 +1,7 @@
 ```html
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,8 +9,17 @@
   <title>ivy's digital diary ♡｡⋆</title>
 
   <style>
+
+    /* =========================
+       BASE
+    ========================= */
+
     * {
       box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
     }
 
     body {
@@ -17,122 +27,180 @@
       padding: 0;
       font-family: Georgia, "Times New Roman", serif;
       color: #403b3d;
+
       background:
-        radial-gradient(circle at 20% 20%, rgba(255,220,232,.35), transparent 25%),
-        radial-gradient(circle at 80% 70%, rgba(245,225,235,.3), transparent 30%),
+        radial-gradient(
+          circle at 15% 15%,
+          rgba(255, 220, 233, 0.35),
+          transparent 25%
+        ),
+        radial-gradient(
+          circle at 85% 75%,
+          rgba(246, 225, 235, 0.3),
+          transparent 28%
+        ),
         #fffdfc;
+
       line-height: 1.5;
     }
 
-    /* ---------------- HEADER ---------------- */
+
+    /* =========================
+       HEADER
+       ========================= */
 
     header {
       position: relative;
       text-align: center;
-      padding: 45px 20px 35px;
-      background: #fff5fa;
-      border-bottom: 1px dashed #dfc3cd;
-    }
 
-    header::before {
-      content: "✧";
-      position: absolute;
-      left: 12%;
-      top: 35px;
-      color: #d99aae;
-      font-size: 22px;
-      transform: rotate(-15deg);
-    }
+      padding: 42px 20px 34px;
 
-    header::after {
-      content: "♡";
-      position: absolute;
-      right: 13%;
-      top: 60px;
-      color: #d99aae;
-      font-size: 20px;
-      transform: rotate(12deg);
+      background: rgba(255, 246, 250, 0.9);
+
+      border-bottom: 1px dashed #dec5ce;
     }
 
     header h1 {
       margin: 0;
-      font-size: clamp(25px, 4vw, 38px);
+
+      font-size: clamp(26px, 4vw, 38px);
       font-weight: normal;
-      color: #51484c;
-      letter-spacing: .5px;
+
+      color: #50484b;
+      letter-spacing: 0.5px;
     }
 
-    .quote {
+    header .quote {
       margin: 8px 0 0;
+
       color: #a17d89;
       font-size: 13px;
       font-style: italic;
     }
 
-    /* ---------------- MAIN LAYOUT ---------------- */
+    header::before {
+      content: "✧";
+
+      position: absolute;
+      left: 12%;
+      top: 35px;
+
+      color: #d397aa;
+      font-size: 23px;
+
+      transform: rotate(-12deg);
+    }
+
+    header::after {
+      content: "♡";
+
+      position: absolute;
+      right: 13%;
+      top: 55px;
+
+      color: #d397aa;
+      font-size: 20px;
+
+      transform: rotate(10deg);
+    }
+
+
+    /* =========================
+       MAIN LAYOUT
+       ========================= */
 
     .container {
       width: min(1200px, 94%);
-      margin: 35px auto 50px;
+
+      margin: 35px auto 60px;
+
       display: grid;
       grid-template-columns: 1fr 0.8fr 1fr;
+
       gap: 38px;
+
       align-items: start;
     }
 
     .left-column,
     .middle-column,
     .right-column {
+      min-width: 0;
+
       display: flex;
       flex-direction: column;
+
       gap: 28px;
-      min-width: 0;
     }
 
-    /* ---------------- HEADINGS ---------------- */
+
+    /* =========================
+       HEADINGS
+       ========================= */
 
     h3 {
       margin: 0 0 10px;
+
       color: #c58299;
+
       font-size: 16px;
       font-weight: normal;
-      letter-spacing: .3px;
+
+      letter-spacing: 0.3px;
+
       border-bottom: 1px dashed #dfc4cd;
+
       padding-bottom: 5px;
     }
 
-    /* ---------------- SCRAPBOOK PHOTO GRID ---------------- */
+
+    /* =========================
+       MOODBOARD
+       ========================= */
 
     .grid-gallery {
       display: grid;
+
       grid-template-columns: repeat(3, 1fr);
+
       gap: 17px;
+
       padding: 12px;
-      background: rgba(255, 247, 250, .65);
-      border: 1px dashed #ead5dc;
+
+      background: rgba(255, 247, 250, 0.45);
+
+      border: 1px dashed #ead6dd;
+      border-radius: 4px;
     }
 
     .grid-gallery img {
       width: 100%;
       aspect-ratio: 1 / 1;
+
       object-fit: cover;
 
-      background: white;
-      border: 6px solid white;
-      box-shadow: 2px 4px 9px rgba(60, 40, 50, .14);
+      /* NO BORDER ♡ */
+
+      border: none;
+      border-radius: 2px;
+
+      box-shadow:
+        2px 4px 9px rgba(60, 40, 50, 0.15);
 
       cursor: pointer;
+
       position: relative;
 
       transition:
-        transform .4s cubic-bezier(.2,.8,.2,1),
-        box-shadow .4s ease,
-        filter .3s ease;
+        transform 0.45s cubic-bezier(.2, .8, .2, 1),
+        box-shadow 0.4s ease,
+        filter 0.3s ease;
 
       will-change: transform;
     }
 
-    /* crooked scrapbook photos */
+
+    /* naturally crooked */
 
     .grid-gallery img:nth-child(1) {
       transform: rotate(-4deg);
@@ -170,46 +238,80 @@
       transform: rotate(-3deg);
     }
 
-    /* photo lifts when hovered */
+
+    /* hover = pick up the photograph */
 
     .grid-gallery img:hover {
-      transform: translateY(-14px) rotate(0deg) scale(1.13);
-      box-shadow: 7px 14px 25px rgba(60, 40, 50, .25);
+      transform:
+        translateY(-14px)
+        rotate(0deg)
+        scale(1.12);
+
+      box-shadow:
+        7px 15px 25px rgba(60, 40, 50, 0.25);
+
+      filter: brightness(1.04);
+
       z-index: 20;
-      filter: brightness(1.03);
     }
 
-    /* ---------------- LITTLE NOTES ---------------- */
+
+    /* =========================
+       SMALL TEXT
+       ========================= */
 
     .footer-quote {
       margin: 5px 0 0;
+
       color: #a89a9f;
+
       font-size: 12px;
+
       font-style: italic;
     }
 
-    /* ---------------- CHECKLISTS ---------------- */
+
+    /* =========================
+       CHECKLISTS
+       ========================= */
 
     .checklist-section {
       padding: 15px;
-      background: #fff9fb;
+
+      background: rgba(255, 249, 251, 0.75);
+
       border: 1px solid #f0dfe5;
-      box-shadow: 2px 3px 8px rgba(80, 50, 60, .05);
+
+      box-shadow:
+        2px 4px 10px rgba(80, 50, 60, 0.05);
     }
 
     .checklist-section label {
       display: block;
+
       margin: 8px 0;
+
       font-size: 14px;
+
       cursor: pointer;
+
+      transition: transform 0.2s ease;
+    }
+
+    .checklist-section label:hover {
+      transform: translateX(3px);
     }
 
     input[type="checkbox"] {
       accent-color: #d89aae;
+
       margin-right: 7px;
     }
 
-    /* ---------------- LINKS / PROJECTS ---------------- */
+
+    /* =========================
+       LINKS
+       ========================= */
 
     .section {
       position: relative;
@@ -217,8 +319,10 @@
 
     .section ul {
       list-style: none;
+
       padding: 0;
       margin: 0;
+
       font-size: 14px;
     }
 
@@ -228,27 +332,40 @@
 
     .text-link {
       display: inline-block;
+
       padding: 3px 10px;
+
       color: #55484d;
+
       text-decoration: none;
+
       border-radius: 8px;
 
       transition:
-        background-color .2s ease,
-        transform .2s ease;
+        background-color 0.2s ease,
+        transform 0.2s ease;
     }
 
     .text-link:hover {
-      background: #f8e5ec;
-      transform: translateX(5px) rotate(-1deg);
+      background-color: #f8e5ec;
+
+      transform:
+        translateX(5px)
+        rotate(-1deg);
     }
 
-    /* ---------------- ABOUT ME ---------------- */
+
+    /* =========================
+       ABOUT ME
+       ========================= */
 
     .pages-header {
       display: flex;
+
       justify-content: space-between;
+
       align-items: baseline;
+
       gap: 10px;
     }
 
@@ -258,71 +375,127 @@
 
     .pages-header p {
       margin: 0;
+
       color: #aaa;
+
       font-size: 11px;
+
       font-style: italic;
+
       white-space: nowrap;
     }
 
+
+    /* paper note */
+
     .page {
       position: relative;
+
       display: flex;
+
       align-items: flex-start;
+
       gap: 15px;
 
-      padding: 15px;
+      padding: 17px;
+
       background: #fffafc;
+
       border: 1px solid #ead9df;
 
-      box-shadow: 3px 5px 12px rgba(70, 45, 55, .08);
+      box-shadow:
+        3px 5px 12px rgba(70, 45, 55, 0.09);
 
       transform: rotate(1deg);
-      transition: transform .35s ease, box-shadow .35s ease;
+
+      transition:
+        transform 0.35s ease,
+        box-shadow 0.35s ease;
     }
 
     .page:hover {
-      transform: rotate(0deg) translateY(-5px);
-      box-shadow: 5px 10px 20px rgba(70, 45, 55, .14);
+      transform:
+        rotate(0deg)
+        translateY(-5px);
+
+      box-shadow:
+        5px 11px 20px rgba(70, 45, 55, 0.15);
     }
 
     .page::before {
       content: "♡";
+
       position: absolute;
+
       right: 10px;
-      top: -10px;
+      top: -12px;
+
       color: #d89bad;
-      font-size: 16px;
+
+      font-size: 17px;
     }
 
     .page img {
       width: 75px !important;
       height: 75px;
+
       object-fit: cover;
-      border: 4px solid white;
-      box-shadow: 1px 3px 7px rgba(0,0,0,.15);
+
+      border: none;
+
+      box-shadow:
+        2px 4px 8px rgba(0, 0, 0, 0.14);
+
       transform: rotate(-4deg);
+
       flex-shrink: 0;
+
+      transition:
+        transform 0.35s ease,
+        box-shadow 0.35s ease;
+    }
+
+    .page:hover img {
+      transform:
+        rotate(2deg)
+        scale(1.05);
+
+      box-shadow:
+        4px 7px 12px rgba(0, 0, 0, 0.18);
     }
 
     .page span {
       font-size: 13px;
     }
 
-    /* ---------------- SPOTIFY ---------------- */
+
+    /* =========================
+       SPOTIFY
+       ========================= */
 
     iframe {
       width: 100%;
+
       border: none;
+
       border-radius: 12px;
-      box-shadow: 2px 4px 10px rgba(70, 45, 55, .08);
+
+      box-shadow:
+        2px 4px 10px rgba(70, 45, 55, 0.08);
     }
 
-    /* ---------------- MOOD STAMPS ---------------- */
+
+    /* =========================
+       MOOD STAMPS
+       ========================= */
 
     .side-gallery {
       display: flex;
+
       flex-direction: column;
+
       gap: 17px;
+
       margin-top: 5px;
     }
 
@@ -332,19 +505,27 @@
 
     .side-gallery img {
       width: 100%;
+
       display: block;
 
-      padding: 5px;
-      background: white;
-      border: 1px solid #eee0e5;
-      box-shadow: 3px 5px 12px rgba(60, 40, 50, .13);
+      border: none;
+      padding: 0;
+
+      border-radius: 2px;
+
+      box-shadow:
+        3px 5px 12px rgba(60, 40, 50, 0.14);
 
       cursor: pointer;
 
       transition:
-        transform .45s cubic-bezier(.2,.8,.2,1),
-        box-shadow .4s ease;
+        transform 0.45s cubic-bezier(.2, .8, .2, 1),
+        box-shadow 0.4s ease,
+        filter 0.3s ease;
     }
+
+
+    /* crooked photos */
 
     .side-gallery img:nth-of-type(1) {
       transform: rotate(3deg);
@@ -366,65 +547,85 @@
       transform: rotate(3deg);
     }
 
+
+    /* hover */
+
     .side-gallery img:hover {
-      transform: translateY(-12px) rotate(0deg) scale(1.04);
-      box-shadow: 7px 14px 22px rgba(60, 40, 50, .22);
+      transform:
+        translateY(-12px)
+        rotate(0deg)
+        scale(1.04);
+
+      box-shadow:
+        7px 14px 22px rgba(60, 40, 50, 0.23);
+
+      filter: brightness(1.04);
+
       z-index: 10;
     }
 
-    /* ---------------- TAPE EFFECT ---------------- */
 
-    .side-gallery img:nth-of-type(1)::after {
-      content: "";
-    }
-
-    /* ---------------- FOOTER ---------------- */
+    /* =========================
+       FOOTER
+       ========================= */
 
     body > p:last-child {
       width: min(750px, 90%);
+
       margin: 60px auto 35px !important;
+
       padding: 25px;
+
       color: #8f8187 !important;
-      background: #fff7fa;
+
+      background: rgba(255, 247, 250, 0.75);
+
       border-top: 1px dashed #dfc4cd;
       border-bottom: 1px dashed #dfc4cd;
+
       line-height: 1.8;
     }
 
-    /* ---------------- MOBILE ---------------- */
+
+    /* =========================
+       MOBILE
+       ========================= */
 
     @media (max-width: 900px) {
+
       .container {
         grid-template-columns: 1fr;
-        max-width: 650px;
-      }
 
-      .middle-column {
-        order: 2;
+        max-width: 650px;
       }
 
       .left-column {
         order: 1;
       }
 
+      .middle-column {
+        order: 2;
+      }
+
       .right-column {
         order: 3;
       }
+
     }
 
+
     @media (max-width: 500px) {
+
       .container {
         width: 92%;
+
         gap: 25px;
       }
 
       .grid-gallery {
-        gap: 10px;
-        padding: 8px;
-      }
+        gap: 11px;
 
-      .grid-gallery img {
-        border-width: 4px;
+        padding: 8px;
       }
 
       .page {
@@ -435,34 +636,60 @@
         width: 90px !important;
         height: 90px;
       }
+
+      header::before,
+      header::after {
+        display: none;
+      }
+
     }
+
   </style>
 </head>
 
 
 <body>
 
-  <!-- HEADER -->
+
+  <!-- =========================
+       HEADER
+       ========================= -->
 
   <header>
-    <h1>ivy's digital diary ♡｡⋆</h1>
+
+    <h1>
+      ivy's digital diary ♡｡⋆
+    </h1>
+
     <p class="quote">
       “my glow-up is not for a comeback — it’s a premiere.” ✧
     </p>
+
   </header>
 
 
-  <!-- MAIN CONTENT -->
+
+  <!-- =========================
+       MAIN
+       ========================= -->
 
   <main class="container">
 
 
-    <!-- LEFT COLUMN -->
+    <!-- =====================
+         LEFT COLUMN
+         ===================== -->
 
     <section class="left-column">
 
+
+      <!-- MOODBOARD -->
+
       <div>
-        <h3>current moodboard ·｡.☆</h3>
+
+        <h3>
+          current moodboard ·｡.☆
+        </h3>
 
         <div class="grid-gallery">
 
@@ -513,14 +740,18 @@
         <p class="footer-quote">
           all images belong to their respective owners ♡
         </p>
+
       </div>
+
 
 
       <!-- BUCKET LIST -->
 
       <div class="checklist-section">
 
-        <h3>bucket list ·｡.☆</h3>
+        <h3>
+          bucket list ·｡.☆
+        </h3>
 
         <label>
           <input type="checkbox">
@@ -545,11 +776,14 @@
       </div>
 
 
+
       <!-- DAILY PRIORITIES -->
 
       <div class="checklist-section">
 
-        <h3>daily priorities ·｡.☆</h3>
+        <h3>
+          daily priorities ·｡.☆
+        </h3>
 
         <label>
           <input type="checkbox">
@@ -577,14 +811,20 @@
 
 
 
-    <!-- MIDDLE COLUMN -->
+    <!-- =====================
+         MIDDLE COLUMN
+         ===================== -->
 
     <section class="middle-column">
 
 
+      <!-- PROJECTS -->
+
       <div class="section">
 
-        <h3>projects ·｡.✧</h3>
+        <h3>
+          projects ·｡.✧
+        </h3>
 
         <ul>
 
@@ -599,7 +839,9 @@
             </a>
           </li>
 
-          <li>-- demo by ivy & friends</li>
+          <li>
+            -- demo by ivy & friends
+          </li>
 
           <li>
             <a
@@ -617,9 +859,14 @@
       </div>
 
 
+
+      <!-- HEADSPACE -->
+
       <div class="section">
 
-        <h3>headspace ·｡.✧</h3>
+        <h3>
+          headspace ·｡.✧
+        </h3>
 
         <ul>
 
@@ -639,9 +886,14 @@
       </div>
 
 
+
+      <!-- SELF STUDY -->
+
       <div class="section">
 
-        <h3>self study ·｡.✧</h3>
+        <h3>
+          self study ·｡.✧
+        </h3>
 
         <ul>
 
@@ -683,29 +935,47 @@
       </div>
 
 
+
+      <!-- WORK TOGETHER -->
+
       <div class="section">
 
-        <h3>let's work together ·｡.✧</h3>
+        <h3>
+          let's work together ·｡.✧
+        </h3>
 
         <ul>
 
-          <li>press kit — click to see pdf</li>
-          <li>contact!!</li>
+          <li>
+            press kit — click to see pdf
+          </li>
+
+          <li>
+            contact!!
+          </li>
 
         </ul>
 
       </div>
 
 
+
+      <!-- SOCIALS -->
+
       <div class="section">
 
-        <h3>socials ·｡.✧</h3>
+        <h3>
+          socials ·｡.✧
+        </h3>
 
         <ul>
 
-          <li>instagram</li>
+          <li>
+            instagram
+          </li>
 
           <li>
+
             <a
               href="https://www.youtube.com/@ivy-ly5dj"
               class="text-link"
@@ -714,12 +984,17 @@
             >
               youtube
             </a>
+
             — check out my vlogs!
+
           </li>
 
-          <li>tiktok</li>
+          <li>
+            tiktok
+          </li>
 
           <li>
+
             <a
               href="https://www.pinterest.com/xen00glossy/"
               class="text-link"
@@ -728,9 +1003,11 @@
             >
               pinterest
             </a>
+
           </li>
 
           <li>
+
             <a
               href="https://open.spotify.com/user/41ejmbsxqkjdc6xzrre0xt1ho?si=583433f014424816"
               class="text-link"
@@ -739,6 +1016,7 @@
             >
               spotify
             </a>
+
           </li>
 
         </ul>
@@ -749,39 +1027,55 @@
 
 
 
-    <!-- RIGHT COLUMN -->
+    <!-- =====================
+         RIGHT COLUMN
+         ===================== -->
 
     <section class="right-column">
 
 
-      <!-- ABOUT -->
+      <!-- ABOUT ME -->
 
       <div>
 
         <div class="pages-header">
 
-          <h3>about me ♡.｡</h3>
+          <h3>
+            about me ♡.｡
+          </h3>
 
-          <p>in progress // forever</p>
+          <p>
+            in progress // forever
+          </p>
 
         </div>
 
 
         <div class="page">
 
-          <img src="page1.jpg" alt="ivy">
+          <img
+            src="page1.jpg"
+            alt="ivy"
+          >
 
           <span>
-            hi<br>
-            my name is ivy.<br><br>
 
-            i am a photographer, filmmaker, and jewelry maker.
+            hi<br>
+
+            my name is ivy.
 
             <br><br>
 
-            i made this personal planner-inspired portfolio
-            for people to get a feel of what's inside my
-            headspace, my pace, and my process.
+            i am a photographer, filmmaker,
+            and jewelry maker.
+
+            <br><br>
+
+            i made this personal planner-inspired
+            portfolio for people to get a feel of
+            what's inside my headspace, my pace,
+            and my process.
+
           </span>
 
         </div>
@@ -789,17 +1083,23 @@
       </div>
 
 
+
       <p class="footer-quote">
-        a girl who is going to do big things cannot let small
-        things get to her ♡
+
+        a girl who is going to do big things
+        cannot let small things get to her ♡
+
       </p>
+
 
 
       <!-- MUSIC -->
 
       <div class="checklist-section">
 
-        <h3>current rotations in sound ·｡.☆</h3>
+        <h3>
+          current rotations in sound ·｡.☆
+        </h3>
 
         <iframe
           src="https://open.spotify.com/embed/playlist/1VyffJHyE6J5pmJ7ivq7VZ?utm_source=generator"
@@ -811,30 +1111,50 @@
       </div>
 
 
+
       <!-- MOOD STAMPS -->
 
       <div class="side-gallery">
 
-        <h3>mood stamps ·｡.✧</h3>
+        <h3>
+          mood stamps ·｡.✧
+        </h3>
+
 
         <img
           src="https://i.pinimg.com/736x/3b/3a/bf/3b3abf63672cbf900fb19088ea72734e.jpg"
           alt="mood stamp"
         >
 
+
         <img
           src="https://i.pinimg.com/736x/bf/02/94/bf02941f2532d24126be2ec4d50cd8eb.jpg"
           alt="mood stamp"
         >
 
-        <img src="tiles.jpg" alt="mood stamp">
 
-        <img src="mirror.jpg" alt="mood stamp">
+        <img
+          src="tiles.jpg"
+          alt="mood stamp"
+        >
 
-        <img src="eyes.jpg" alt="mood stamp">
+
+        <img
+          src="mirror.jpg"
+          alt="mood stamp"
+        >
+
+
+        <img
+          src="eyes.jpg"
+          alt="mood stamp"
+        >
+
 
         <p class="footer-quote">
+
           all images belong to their respective owners ♡
+
         </p>
 
       </div>
@@ -845,21 +1165,36 @@
 
 
 
-  <!-- FOOTER -->
+  <!-- =========================
+       FOOTER
+       ========================= -->
 
   <p style="
     font-style: italic;
-    font-size: .9rem;
+    font-size: 0.9rem;
     text-align: center;
+    color: #888;
   ">
-    this planner is a diary, yes — but it's also a runway,
-    a mirror, a rehearsal space.<br>
 
-    to future collaborators: thank you for peeking in.
-    <br>✧<br>
+    this planner is a diary, yes —
+    but it's also a runway, a mirror,
+    a rehearsal space.
+
+    <br>
+
+    to future collaborators:
+    thank you for peeking in.
+
+    <br>
+
+    ✧
+
+    <br>
 
     this port began on 07.22.25 —
+
   </p>
+
 
 </body>
 </html>
