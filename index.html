@@ -1,340 +1,866 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>ivy’s digital diary ♡｡⋆</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>ivy's digital diary ♡｡⋆</title>
+
   <style>
-    body {
-      font-family: 'Georgia', serif;
-      background: #fff;
-      color: #333;
-      margin: 0;
-      padding: 0;
+    * {
+      box-sizing: border-box;
     }
 
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Georgia, "Times New Roman", serif;
+      color: #403b3d;
+      background:
+        radial-gradient(circle at 20% 20%, rgba(255,220,232,.35), transparent 25%),
+        radial-gradient(circle at 80% 70%, rgba(245,225,235,.3), transparent 30%),
+        #fffdfc;
+      line-height: 1.5;
+    }
+
+    /* ---------------- HEADER ---------------- */
+
     header {
+      position: relative;
       text-align: center;
-      padding: 20px;
-      border-bottom: 1px solid #f0f0f0;
-      background-color: #fff5fa;
+      padding: 45px 20px 35px;
+      background: #fff5fa;
+      border-bottom: 1px dashed #dfc3cd;
+    }
+
+    header::before {
+      content: "✧";
+      position: absolute;
+      left: 12%;
+      top: 35px;
+      color: #d99aae;
+      font-size: 22px;
+      transform: rotate(-15deg);
+    }
+
+    header::after {
+      content: "♡";
+      position: absolute;
+      right: 13%;
+      top: 60px;
+      color: #d99aae;
+      font-size: 20px;
+      transform: rotate(12deg);
     }
 
     header h1 {
-      font-size: 24px;
       margin: 0;
-      color: #444;
+      font-size: clamp(25px, 4vw, 38px);
+      font-weight: normal;
+      color: #51484c;
+      letter-spacing: .5px;
     }
 
     .quote {
+      margin: 8px 0 0;
+      color: #a17d89;
       font-size: 13px;
-      color: #888;
-      margin-top: 5px;
+      font-style: italic;
     }
 
+    /* ---------------- MAIN LAYOUT ---------------- */
+
     .container {
-      display: flex;
-      max-width: 1200px;
-      margin: 20px auto;
-      gap: 30px;
-      padding: 0 20px;
+      width: min(1200px, 94%);
+      margin: 35px auto 50px;
+      display: grid;
+      grid-template-columns: 1fr 0.8fr 1fr;
+      gap: 38px;
+      align-items: start;
     }
 
     .left-column,
     .middle-column,
     .right-column {
-      flex: 1;
       display: flex;
       flex-direction: column;
-      gap: 20px;
-    .grid-gallery {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 14px;
-  padding: 10px;
-}
+      gap: 28px;
+      min-width: 0;
+    }
 
-.grid-gallery img {
-  width: 100%;
-  aspect-ratio: 1 / 1;
-  object-fit: cover;
-  border-radius: 2px;
+    /* ---------------- HEADINGS ---------------- */
 
-  /* scrapbook feel */
-  border: 5px solid white;
-  box-shadow: 2px 3px 8px rgba(0,0,0,0.15);
-
-  cursor: pointer;
-
-  /* makes the movement smooth */
-  transition:
-    transform 0.35s cubic-bezier(.2,.8,.2,1),
-    box-shadow 0.35s ease,
-    z-index 0s;
-
-  position: relative;
-}
-
-/* random little scrapbook rotations */
-.grid-gallery img:nth-child(1) { transform: rotate(-3deg); }
-.grid-gallery img:nth-child(2) { transform: rotate(2deg); }
-.grid-gallery img:nth-child(3) { transform: rotate(-1deg); }
-.grid-gallery img:nth-child(4) { transform: rotate(3deg); }
-.grid-gallery img:nth-child(5) { transform: rotate(-2deg); }
-.grid-gallery img:nth-child(6) { transform: rotate(1deg); }
-.grid-gallery img:nth-child(7) { transform: rotate(-2deg); }
-.grid-gallery img:nth-child(8) { transform: rotate(3deg); }
-.grid-gallery img:nth-child(9) { transform: rotate(-1deg); }
-
-/* hover = physically picking up the photo */
-.grid-gallery img:hover {
-  transform: translateY(-12px) rotate(0deg) scale(1.12);
-  box-shadow:
-    6px 12px 20px rgba(0,0,0,0.22);
-
-  z-index: 10;
-}
-
-    
-.side-gallery img,
-.page img {
-  width: 100%;
-  border-radius: 4px;
-}
-.grid-gallery img {
-  width: 100%;
-  aspect-ratio: 1 / 1; /* forces square shape */
-  object-fit: cover;   /* zooms in/crops to fit square */
-  border-radius: 4px;
-}
-
-    .section h3,
-    .checklist-section h3,
-    .pages-header h3 
-    .left-column h3{
+    h3 {
+      margin: 0 0 10px;
+      color: #c58299;
       font-size: 16px;
-      color: #d18fa5;
-      margin-bottom: 5px;
-      border-bottom: 1px dashed #e3c9cf;
-      padding-bottom: 3px;
+      font-weight: normal;
+      letter-spacing: .3px;
+      border-bottom: 1px dashed #dfc4cd;
+      padding-bottom: 5px;
     }
 
-    .section ul,
+    /* ---------------- SCRAPBOOK PHOTO GRID ---------------- */
+
+    .grid-gallery {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 17px;
+      padding: 12px;
+      background: rgba(255, 247, 250, .65);
+      border: 1px dashed #ead5dc;
+    }
+
+    .grid-gallery img {
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      object-fit: cover;
+
+      background: white;
+      border: 6px solid white;
+      box-shadow: 2px 4px 9px rgba(60, 40, 50, .14);
+
+      cursor: pointer;
+      position: relative;
+
+      transition:
+        transform .4s cubic-bezier(.2,.8,.2,1),
+        box-shadow .4s ease,
+        filter .3s ease;
+
+      will-change: transform;
+    }
+
+    /* crooked scrapbook photos */
+
+    .grid-gallery img:nth-child(1) {
+      transform: rotate(-4deg);
+    }
+
+    .grid-gallery img:nth-child(2) {
+      transform: rotate(2deg);
+    }
+
+    .grid-gallery img:nth-child(3) {
+      transform: rotate(-2deg);
+    }
+
+    .grid-gallery img:nth-child(4) {
+      transform: rotate(3deg);
+    }
+
+    .grid-gallery img:nth-child(5) {
+      transform: rotate(-3deg);
+    }
+
+    .grid-gallery img:nth-child(6) {
+      transform: rotate(2deg);
+    }
+
+    .grid-gallery img:nth-child(7) {
+      transform: rotate(-2deg);
+    }
+
+    .grid-gallery img:nth-child(8) {
+      transform: rotate(3deg);
+    }
+
+    .grid-gallery img:nth-child(9) {
+      transform: rotate(-3deg);
+    }
+
+    /* photo lifts when hovered */
+
+    .grid-gallery img:hover {
+      transform: translateY(-14px) rotate(0deg) scale(1.13);
+      box-shadow: 7px 14px 25px rgba(60, 40, 50, .25);
+      z-index: 20;
+      filter: brightness(1.03);
+    }
+
+    /* ---------------- LITTLE NOTES ---------------- */
+
+    .footer-quote {
+      margin: 5px 0 0;
+      color: #a89a9f;
+      font-size: 12px;
+      font-style: italic;
+    }
+
+    /* ---------------- CHECKLISTS ---------------- */
+
     .checklist-section {
-      font-size: 14px;
-      list-style: none;
-      padding: 0;
-      margin: 0;
-    }
-
-    .section ul li {
-      margin-bottom: 6px;
+      padding: 15px;
+      background: #fff9fb;
+      border: 1px solid #f0dfe5;
+      box-shadow: 2px 3px 8px rgba(80, 50, 60, .05);
     }
 
     .checklist-section label {
       display: block;
-      margin-bottom: 5px;
+      margin: 8px 0;
+      font-size: 14px;
+      cursor: pointer;
     }
+
+    input[type="checkbox"] {
+      accent-color: #d89aae;
+      margin-right: 7px;
+    }
+
+    /* ---------------- LINKS / PROJECTS ---------------- */
+
+    .section {
+      position: relative;
+    }
+
+    .section ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      font-size: 14px;
+    }
+
+    .section li {
+      margin: 6px 0;
+    }
+
+    .text-link {
+      display: inline-block;
+      padding: 3px 10px;
+      color: #55484d;
+      text-decoration: none;
+      border-radius: 8px;
+
+      transition:
+        background-color .2s ease,
+        transform .2s ease;
+    }
+
+    .text-link:hover {
+      background: #f8e5ec;
+      transform: translateX(5px) rotate(-1deg);
+    }
+
+    /* ---------------- ABOUT ME ---------------- */
 
     .pages-header {
       display: flex;
       justify-content: space-between;
-      align-items: center;
-    }
-
-    .pages-list .page {
-      display: flex;
-      align-items: center;
+      align-items: baseline;
       gap: 10px;
-      margin-bottom: 10px;
     }
 
-    .add-new {
-      background: #fbe6ee;
-      border: none;
-      padding: 5px 10px;
-      border-radius: 4px;
-      font-size: 14px;
-      cursor: pointer;
-      color: #b17086;
+    .pages-header h3 {
+      flex: 1;
     }
 
-    .footer-quote {
-      font-size: 13px;
-      color: #999;
+    .pages-header p {
+      margin: 0;
+      color: #aaa;
+      font-size: 11px;
       font-style: italic;
-      margin-top: 20px;
+      white-space: nowrap;
     }
+
+    .page {
+      position: relative;
+      display: flex;
+      align-items: flex-start;
+      gap: 15px;
+
+      padding: 15px;
+      background: #fffafc;
+      border: 1px solid #ead9df;
+
+      box-shadow: 3px 5px 12px rgba(70, 45, 55, .08);
+
+      transform: rotate(1deg);
+      transition: transform .35s ease, box-shadow .35s ease;
+    }
+
+    .page:hover {
+      transform: rotate(0deg) translateY(-5px);
+      box-shadow: 5px 10px 20px rgba(70, 45, 55, .14);
+    }
+
+    .page::before {
+      content: "♡";
+      position: absolute;
+      right: 10px;
+      top: -10px;
+      color: #d89bad;
+      font-size: 16px;
+    }
+
+    .page img {
+      width: 75px !important;
+      height: 75px;
+      object-fit: cover;
+      border: 4px solid white;
+      box-shadow: 1px 3px 7px rgba(0,0,0,.15);
+      transform: rotate(-4deg);
+      flex-shrink: 0;
+    }
+
+    .page span {
+      font-size: 13px;
+    }
+
+    /* ---------------- SPOTIFY ---------------- */
+
+    iframe {
+      width: 100%;
+      border: none;
+      border-radius: 12px;
+      box-shadow: 2px 4px 10px rgba(70, 45, 55, .08);
+    }
+
+    /* ---------------- MOOD STAMPS ---------------- */
 
     .side-gallery {
       display: flex;
       flex-direction: column;
-      gap: 6px;
-      margin-top: 10px;
+      gap: 17px;
+      margin-top: 5px;
     }
-    .text-link {
-  display: inline-block;  /* enables better padding control */
-  padding: 2px 12px;       /* more horizontal space */
-  border-radius: 6px;
-  text-decoration: none;
-  color: inherit;
-  font: inherit;
-  transition: background-color 0.2s ease;
-}
 
-.text-link:hover {
-  background-color: rgba(0, 0, 0, 0.07);
-}
+    .side-gallery h3 {
+      margin-bottom: 0;
+    }
+
+    .side-gallery img {
+      width: 100%;
+      display: block;
+
+      padding: 5px;
+      background: white;
+      border: 1px solid #eee0e5;
+      box-shadow: 3px 5px 12px rgba(60, 40, 50, .13);
+
+      cursor: pointer;
+
+      transition:
+        transform .45s cubic-bezier(.2,.8,.2,1),
+        box-shadow .4s ease;
+    }
+
+    .side-gallery img:nth-of-type(1) {
+      transform: rotate(3deg);
+    }
+
+    .side-gallery img:nth-of-type(2) {
+      transform: rotate(-3deg);
+    }
+
+    .side-gallery img:nth-of-type(3) {
+      transform: rotate(2deg);
+    }
+
+    .side-gallery img:nth-of-type(4) {
+      transform: rotate(-2deg);
+    }
+
+    .side-gallery img:nth-of-type(5) {
+      transform: rotate(3deg);
+    }
+
+    .side-gallery img:hover {
+      transform: translateY(-12px) rotate(0deg) scale(1.04);
+      box-shadow: 7px 14px 22px rgba(60, 40, 50, .22);
+      z-index: 10;
+    }
+
+    /* ---------------- TAPE EFFECT ---------------- */
+
+    .side-gallery img:nth-of-type(1)::after {
+      content: "";
+    }
+
+    /* ---------------- FOOTER ---------------- */
+
+    body > p:last-child {
+      width: min(750px, 90%);
+      margin: 60px auto 35px !important;
+      padding: 25px;
+      color: #8f8187 !important;
+      background: #fff7fa;
+      border-top: 1px dashed #dfc4cd;
+      border-bottom: 1px dashed #dfc4cd;
+      line-height: 1.8;
+    }
+
+    /* ---------------- MOBILE ---------------- */
+
+    @media (max-width: 900px) {
+      .container {
+        grid-template-columns: 1fr;
+        max-width: 650px;
+      }
+
+      .middle-column {
+        order: 2;
+      }
+
+      .left-column {
+        order: 1;
+      }
+
+      .right-column {
+        order: 3;
+      }
+    }
+
+    @media (max-width: 500px) {
+      .container {
+        width: 92%;
+        gap: 25px;
+      }
+
+      .grid-gallery {
+        gap: 10px;
+        padding: 8px;
+      }
+
+      .grid-gallery img {
+        border-width: 4px;
+      }
+
+      .page {
+        flex-direction: column;
+      }
+
+      .page img {
+        width: 90px !important;
+        height: 90px;
+      }
+    }
   </style>
 </head>
+
+
 <body>
+
+  <!-- HEADER -->
+
   <header>
-    <h1>ivy’s digital diary ♡｡⋆</h1>
-    <p class="quote">“my glow-up is not for a comeback — it’s a premiere.” ✧</p>
-    
+    <h1>ivy's digital diary ♡｡⋆</h1>
+    <p class="quote">
+      “my glow-up is not for a comeback — it’s a premiere.” ✧
+    </p>
   </header>
- 
+
+
+  <!-- MAIN CONTENT -->
+
   <main class="container">
+
+
+    <!-- LEFT COLUMN -->
+
     <section class="left-column">
-      <h3>current moodboard ·｡.☆</h3>
-      <div class="grid-gallery">
-        <img src="" alt="">
-        <img src="https://i.pinimg.com/1200x/72/d6/3d/72d63d9813a3b3fc9b1b8d26ed20d807.jpg" alt="">
-        <img src="https://i.pinimg.com/736x/d9/f7/9b/d9f79bbe1cd53295226d821de4156c8e.jpg" alt="">
-        <img src="https://i.pinimg.com/736x/47/64/bb/4764bb17972e86b97eb7d39873e9505e.jpg" alt="">
-        <img src="https://i.pinimg.com/736x/55/69/8c/55698c3bccae68b81996299141843c5e.jpg" alt="">
-        <img src="https://i.pinimg.com/736x/24/dd/e0/24dde01c38dd8cb475a8efcc8ceca434.jpg" alt="">
-        <img src="https://i.pinimg.com/736x/0f/14/0e/0f140e98408edc7370eaf4e89f7c0762.jpg" alt="">
-        <img src="https://i.pinimg.com/736x/66/a8/70/66a8700398d8db33229973ffc05702ec.jpg" alt="">
-        <img src="https://i.pinimg.com/736x/0c/d1/8a/0cd18a36a7e1a1dd79d898ab2a0aee80.jpg" alt="">
-      </div>
-  <p class="footer-quote">all images belong to their respective owners ♡</p>
-      <div class="checklist-section">
-        <h3>bucket list ·｡.☆</h3>
-        <label><input type="checkbox"> befriend a stray cat</label>
-        <label><input type="checkbox"> stay on top of work</label>
-        <label><input type="checkbox"> get back into habits</label>
-        <label><input type="checkbox"> write song</label>
+
+      <div>
+        <h3>current moodboard ·｡.☆</h3>
+
+        <div class="grid-gallery">
+
+          <img src="" alt="moodboard image">
+
+          <img
+            src="https://i.pinimg.com/1200x/72/d6/3d/72d63d9813a3b3fc9b1b8d26ed20d807.jpg"
+            alt="moodboard image"
+          >
+
+          <img
+            src="https://i.pinimg.com/736x/d9/f7/9b/d9f79bbe1cd53295226d821de4156c8e.jpg"
+            alt="moodboard image"
+          >
+
+          <img
+            src="https://i.pinimg.com/736x/47/64/bb/4764bb17972e86b97eb7d39873e9505e.jpg"
+            alt="moodboard image"
+          >
+
+          <img
+            src="https://i.pinimg.com/736x/55/69/8c/55698c3bccae68b81996299141843c5e.jpg"
+            alt="moodboard image"
+          >
+
+          <img
+            src="https://i.pinimg.com/736x/24/dd/e0/24dde01c38dd8cb475a8efcc8ceca434.jpg"
+            alt="moodboard image"
+          >
+
+          <img
+            src="https://i.pinimg.com/736x/0f/14/0e/0f140e98408edc7370eaf4e89f7c0762.jpg"
+            alt="moodboard image"
+          >
+
+          <img
+            src="https://i.pinimg.com/736x/66/a8/70/66a8700398d8db33229973ffc05702ec.jpg"
+            alt="moodboard image"
+          >
+
+          <img
+            src="https://i.pinimg.com/736x/0c/d1/8a/0cd18a36a7e1a1dd79d898ab2a0aee80.jpg"
+            alt="moodboard image"
+          >
+
+        </div>
+
+        <p class="footer-quote">
+          all images belong to their respective owners ♡
+        </p>
       </div>
 
+
+      <!-- BUCKET LIST -->
+
       <div class="checklist-section">
-        <h3>daily priorities ·｡.☆</h3>
-        <label><input type="checkbox"> drink water</label>
-        <label><input type="checkbox"> eat healthy</label>
-        <label><input type="checkbox"> get enough sleep</label>
-        <label><input type="checkbox"> stretch</label>
+
+        <h3>bucket list ·｡.☆</h3>
+
+        <label>
+          <input type="checkbox">
+          befriend a stray cat
+        </label>
+
+        <label>
+          <input type="checkbox">
+          stay on top of work
+        </label>
+
+        <label>
+          <input type="checkbox">
+          get back into habits
+        </label>
+
+        <label>
+          <input type="checkbox">
+          write song
+        </label>
+
       </div>
+
+
+      <!-- DAILY PRIORITIES -->
+
+      <div class="checklist-section">
+
+        <h3>daily priorities ·｡.☆</h3>
+
+        <label>
+          <input type="checkbox">
+          drink water
+        </label>
+
+        <label>
+          <input type="checkbox">
+          eat healthy
+        </label>
+
+        <label>
+          <input type="checkbox">
+          get enough sleep
+        </label>
+
+        <label>
+          <input type="checkbox">
+          stretch
+        </label>
+
+      </div>
+
     </section>
+
+
+
+    <!-- MIDDLE COLUMN -->
 
     <section class="middle-column">
+
+
       <div class="section">
+
         <h3>projects ·｡.✧</h3>
+
         <ul>
-          <li><a href="ephemera.html" 
-   class="text-link" 
-   target="_blank" 
-   rel="noopener noreferrer">ephemera</a>
-</li>
-          <li>--demo by ivy & friends</li>
-          <li><a href="dance-practice.html" 
-   class="text-link" 
-   target="_blank" 
-   rel="noopener noreferrer">dance practices</a>
-</li>
+
+          <li>
+            <a
+              href="ephemera.html"
+              class="text-link"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              ephemera
+            </a>
+          </li>
+
+          <li>-- demo by ivy & friends</li>
+
+          <li>
+            <a
+              href="dance-practice.html"
+              class="text-link"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              dance practices
+            </a>
+          </li>
+
         </ul>
+
       </div>
+
+
       <div class="section">
+
         <h3>headspace ·｡.✧</h3>
+
         <ul>
-           <li><a href="notebook.html" 
-   class="text-link" 
-   target="_blank" 
-   rel="noopener noreferrer">notebook </a>
-</li>
+
+          <li>
+            <a
+              href="notebook.html"
+              class="text-link"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              notebook
+            </a>
+          </li>
+
         </ul>
+
       </div>
+
+
       <div class="section">
+
         <h3>self study ·｡.✧</h3>
+
         <ul>
-          <li><a href="skincare-routine.html" 
-   class="text-link" 
-   target="_blank" 
-   rel="noopener noreferrer">skincare routine</a>
-</li>
-          <li><a href="makeup-guide.html" 
-   class="text-link" 
-   target="_blank" 
-   rel="noopener noreferrer">makeup guide</a>
-</li>
-           <li><a href="fitness-plan.html" 
-   class="text-link" 
-   target="_blank" 
-   rel="noopener noreferrer">fitness plan</a>
-</li>
+
+          <li>
+            <a
+              href="skincare-routine.html"
+              class="text-link"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              skincare routine
+            </a>
+          </li>
+
+          <li>
+            <a
+              href="makeup-guide.html"
+              class="text-link"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              makeup guide
+            </a>
+          </li>
+
+          <li>
+            <a
+              href="fitness-plan.html"
+              class="text-link"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              fitness plan
+            </a>
+          </li>
+
         </ul>
+
       </div>
+
+
       <div class="section">
+
         <h3>let's work together ·｡.✧</h3>
+
         <ul>
-          <li>press kit  -- click to see pdf</li>
+
+          <li>press kit — click to see pdf</li>
           <li>contact!!</li>
+
         </ul>
+
       </div>
+
+
       <div class="section">
+
         <h3>socials ·｡.✧</h3>
+
         <ul>
+
           <li>instagram</li>
-          <li><a href="https://www.youtube.com/@ivy-ly5dj" 
-   class="text-link" 
-   target="_blank" 
-   rel="noopener noreferrer">youtube</a> --check out my vlogs!
-</li>
+
+          <li>
+            <a
+              href="https://www.youtube.com/@ivy-ly5dj"
+              class="text-link"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              youtube
+            </a>
+            — check out my vlogs!
+          </li>
+
           <li>tiktok</li>
-          <li><a href="https://www.pinterest.com/xen00glossy/" 
-   class="text-link" 
-   target="_blank" 
-   rel="noopener noreferrer">pinterest</a> 
-</li>
-          <li><a href="https://open.spotify.com/user/41ejmbsxqkjdc6xzrre0xt1ho?si=583433f014424816" 
-   class="text-link" 
-   target="_blank" 
-   rel="noopener noreferrer">spotify</a> 
-</li>
+
+          <li>
+            <a
+              href="https://www.pinterest.com/xen00glossy/"
+              class="text-link"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              pinterest
+            </a>
+          </li>
+
+          <li>
+            <a
+              href="https://open.spotify.com/user/41ejmbsxqkjdc6xzrre0xt1ho?si=583433f014424816"
+              class="text-link"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              spotify
+            </a>
+          </li>
+
         </ul>
+
       </div>
+
     </section>
+
+
+
+    <!-- RIGHT COLUMN -->
 
     <section class="right-column">
-      <div class="pages-header">
-        <h3>about me ♡.｡</h3>
-        <p>in progress // forever</p>
-      </div>
-      <div class="pages-list">
+
+
+      <!-- ABOUT -->
+
+      <div>
+
+        <div class="pages-header">
+
+          <h3>about me ♡.｡</h3>
+
+          <p>in progress // forever</p>
+
+        </div>
+
+
         <div class="page">
-          <img src="page1.jpg" alt="" style="width: 60px;">
-          <span>hi<br>my name is ivy.<br> i am a photographer, filmmaker, and a jewelry maker<br>i made this personal planner inspired portfolio for people to get a feel of whats it like inside my headspace, my pace, my process.<br></span>
+
+          <img src="page1.jpg" alt="ivy">
+
+          <span>
+            hi<br>
+            my name is ivy.<br><br>
+
+            i am a photographer, filmmaker, and jewelry maker.
+
+            <br><br>
+
+            i made this personal planner-inspired portfolio
+            for people to get a feel of what's inside my
+            headspace, my pace, and my process.
+          </span>
+
+        </div>
+
       </div>
 
-      <p class="footer-quote">a girl who is going to do big things cannot let small things get to her ♡</p>
-<div class="checklist-section">
+
+      <p class="footer-quote">
+        a girl who is going to do big things cannot let small
+        things get to her ♡
+      </p>
+
+
+      <!-- MUSIC -->
+
+      <div class="checklist-section">
+
         <h3>current rotations in sound ·｡.☆</h3>
-        <iframe data-testid="embed-iframe" style="border-radius:12px" src="https://open.spotify.com/embed/playlist/1VyffJHyE6J5pmJ7ivq7VZ?utm_source=generator" width="100%" height="200" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+
+        <iframe
+          src="https://open.spotify.com/embed/playlist/1VyffJHyE6J5pmJ7ivq7VZ?utm_source=generator"
+          height="200"
+          allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+          loading="lazy">
+        </iframe>
+
+      </div>
+
+
+      <!-- MOOD STAMPS -->
 
       <div class="side-gallery">
-          <h3>mood stamps ·｡.✧</h3>
-        <img src="https://i.pinimg.com/736x/3b/3a/bf/3b3abf63672cbf900fb19088ea72734e.jpg" alt="">
-        <img src="https://i.pinimg.com/736x/bf/02/94/bf02941f2532d24126be2ec4d50cd8eb.jpg" alt="">
-        <img src="tiles.jpg" alt="">
-        <img src="mirror.jpg" alt="">
-        <img src="eyes.jpg" alt="">
-         <p class="footer-quote">all images belong to their respective owners ♡</p>
+
+        <h3>mood stamps ·｡.✧</h3>
+
+        <img
+          src="https://i.pinimg.com/736x/3b/3a/bf/3b3abf63672cbf900fb19088ea72734e.jpg"
+          alt="mood stamp"
+        >
+
+        <img
+          src="https://i.pinimg.com/736x/bf/02/94/bf02941f2532d24126be2ec4d50cd8eb.jpg"
+          alt="mood stamp"
+        >
+
+        <img src="tiles.jpg" alt="mood stamp">
+
+        <img src="mirror.jpg" alt="mood stamp">
+
+        <img src="eyes.jpg" alt="mood stamp">
+
+        <p class="footer-quote">
+          all images belong to their respective owners ♡
+        </p>
+
       </div>
+
     </section>
-  
+
   </main>
-  <p style="font-style: italic; font-size: 0.9rem; text-align: center; color: #888;">
-  this planner is a diary, yes — but it's also a runway, a mirror, a rehearsal space.  
-  to future collaborators: thank you for peeking in.<br>✧<br>this port began on 07.22.25 —
-</p>
+
+
+
+  <!-- FOOTER -->
+
+  <p style="
+    font-style: italic;
+    font-size: .9rem;
+    text-align: center;
+  ">
+    this planner is a diary, yes — but it's also a runway,
+    a mirror, a rehearsal space.<br>
+
+    to future collaborators: thank you for peeking in.
+    <br>✧<br>
+
+    this port began on 07.22.25 —
+  </p>
+
 </body>
 </html>
+```
